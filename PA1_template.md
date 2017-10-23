@@ -82,7 +82,15 @@ mean.daily.steps <- mean(activity.data.steps$steps.day, na.rm = TRUE) # Find the
 median.daily.steps <- median(activity.data.steps$steps.day, na.rm = TRUE) # Find the median of the daily counts
 ```
 
-The mean total number of steps taken per day is 9354, and the median total number of steps taken per day is 10395.
+``` r
+daily.hist <- ggplot(activity.data.steps, aes(steps.day)) 
+daily.hist + geom_histogram(bins = 30 , alpha = 1/3, fill = "blue") +
+    xlab("Total daily steps") +
+    ylab("Frequency") +
+    ggtitle("Distribution of Total Daily Steps")
+```
+
+![](PA1_template_files/figure-markdown_github-ascii_identifiers/dailyhist-1.png) The mean total number of steps taken per day is 9354, and the median total number of steps taken per day is 10395.
 
 ### Average Daily Pattern
 
@@ -123,7 +131,7 @@ The interval with the maximum number of steps is inverval 835, with an average o
 
 ### Imputing Missing Values
 
-Calculate and report the total number of missing values in the dataset (i.e. the total number of rows with NAs) �s)
+Calculate and report the total number of missing values in the dataset (i.e. the total number of rows with NAs)
 
 ``` r
 missing.finder <- is.na(activity.data.date)
